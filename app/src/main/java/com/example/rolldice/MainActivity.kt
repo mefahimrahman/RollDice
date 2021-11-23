@@ -10,22 +10,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val rollButton: Button = findViewById(R.id.rollButton)
-        rollButton.setOnClickListener {
-            rollDice()
-        }
+        rollButton.setOnClickListener { rollDiceClicked() }
     }
 
-    private fun rollDice() {
+    private fun rollDiceClicked() {
         val dice = Dice(6)
-        val diceRoll = dice.roll()
-        val diceNumber: TextView = findViewById(R.id.diceNumber)
-        diceNumber.text = diceRoll.toString()
+        val diceNumber: TextView = findViewById(R.id.diceFaceNumber)
+        diceNumber.text = dice.roll().toString()
     }
 }
 
 class Dice(val numberOfSides: Int) {
-    fun roll(): Int {
-        return (1..numberOfSides).random()
-    }
-
+    fun roll() = (1..numberOfSides).random()
 }
