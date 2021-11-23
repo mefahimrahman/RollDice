@@ -16,9 +16,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDiceClicked() {
         val dice = Dice(6)
+        val diceFace = dice.roll()
         val diceNumber: TextView = findViewById(R.id.diceFaceNumber)
-        diceNumber.text = dice.roll().toString()
-        Toast.makeText(this, "Tapped", Toast.LENGTH_SHORT).show()
+        diceNumber.text = diceFace.toString()
+        when (diceFace) {
+            5 -> displayLuckyNumberToast()
+            1, 2, 3, 4, 6 -> displayTryAgainToast()
+        }
+    }
+
+    private fun displayTryAgainToast() {
+        Toast.makeText(this, "Ops!! Try Again", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun displayLuckyNumberToast() {
+        Toast.makeText(this, "Yeee!! Lucky Number!!", Toast.LENGTH_SHORT).show()
     }
 }
 
