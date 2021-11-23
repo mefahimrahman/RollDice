@@ -3,6 +3,7 @@ package com.example.rolldice
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val diceNumber: TextView = findViewById(R.id.diceFaceNumber)
         diceNumber.text = dice.roll().toString()
+        Toast.makeText(this, "Tapped", Toast.LENGTH_SHORT).show()
     }
 }
 
